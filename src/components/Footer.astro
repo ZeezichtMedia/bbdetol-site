@@ -7,13 +7,13 @@ const currentLang = (currentPath.split('/')[1] in ui) ? currentPath.split('/')[1
 const t = ui[currentLang];
 ---
 
-<footer class="bg-stone-900 text-stone-300 py-16 mt-auto">
+<footer class="bg-green-900 text-stone-200 py-16 mt-auto">
   <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-12">
     
     <!-- Brand -->
     <div>
       <h3 class="text-2xl font-serif font-bold text-white mb-4">B&B De Tol</h3>
-      <p class="mb-6 leading-relaxed">
+      <p class="mb-6 leading-relaxed text-green-100">
         {t['footer.desc']}
       </p>
       <div class="flex gap-4">
@@ -38,21 +38,24 @@ const t = ui[currentLang];
         <h3 class="text-lg font-bold text-white mb-4">{t['footer.contact']}</h3>
         <ul class="space-y-4">
             <li class="flex items-start gap-3">
-                <MapPin class="w-5 h-5 mt-1 shrink-0" />
+                <MapPin class="w-5 h-5 mt-1 shrink-0 text-green-300" />
                 <span>Rapenburg 143<br/>4581 AC Vogelwaarde</span>
             </li>
             <li class="flex items-center gap-3">
-                <Phone class="w-5 h-5 shrink-0" />
+                <Phone class="w-5 h-5 shrink-0 text-green-300" />
                 <a href="tel:+31625077872" class="hover:text-white">(+31) 06-25077872</a>
             </li>
             <li class="flex items-center gap-3">
-                <Mail class="w-5 h-5 shrink-0" />
+                <Mail class="w-5 h-5 shrink-0 text-green-300" />
                 <a href="mailto:info@bedandbreakfastdetol.nl" class="hover:text-white">info@bedandbreakfastdetol.nl</a>
             </li>
         </ul>
     </div>
   </div>
-  <div class="border-t border-stone-800 mt-12 pt-8 text-center text-sm text-stone-500">
-      &copy; {new Date().getFullYear()} B&B De Tol. {t['footer.rights']}
+  <div class="border-t border-green-800 mt-12 pt-8 text-center text-sm text-green-200/60 flex flex-col md:flex-row justify-between items-center gap-2">
+      <div>&copy; {new Date().getFullYear()} B&B De Tol. {t['footer.rights']}</div>
+      <div>
+        Gerealiseerd door <a href="https://zee-zicht.nl" target="_blank" rel="noopener noreferrer" class="hover:text-white transition decoration-green-400/30 underline underline-offset-4">Zeezicht</a>
+      </div>
   </div>
 </footer>
