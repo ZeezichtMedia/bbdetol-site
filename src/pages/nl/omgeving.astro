@@ -1,0 +1,85 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Castle, Trees, Building2, Sun, Bike } from 'lucide-react';
+
+const localSpots = [
+    {
+        title: "Vestingstad Hulst",
+        description: "Bezoek de historische vestingstad met zijn wallen, basiliek en gezellige terrassen.",
+        Icon: Castle,
+        distance: "7 km"
+    },
+    {
+        title: "Verdronken Land van Saeftinghe",
+        description: "Een uniek natuurgebied, ideaal voor avontuurlijke wandelingen en natuurliefhebbers.",
+        Icon: Trees,
+        distance: "10 km"
+    },
+    {
+        title: "Antwerpen & Gent",
+        description: "Binnen 40 minuten staat u in het hart van deze prachtige Vlaamse steden.",
+        Icon: Building2,
+        distance: "40 km"
+    },
+     {
+        title: "Strand & Kust",
+        description: "Uitwaaien aan de Zeeuwse kust bij Breskens of Cadzand.",
+        Icon: Sun,
+        distance: "30-40 min"
+    }
+];
+---
+
+<Layout title="Omgeving | B&B De Tol" lang="nl">
+  <!-- Hero -->
+  <div class="relative h-[50vh] bg-stone-900 flex items-center justify-center">
+      <div class="absolute inset-0 overflow-hidden opacity-60">
+        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/749264372.jpg?k=dda48c53570ddf3bb6d9356dc5da296cd4b034075379255877811c5b0d2a0e3e&o=&hp=1" class="w-full h-full object-cover" />
+      </div>
+      <div class="relative z-10 text-center text-white px-4">
+          <h1 class="text-4xl md:text-6xl font-serif font-bold mb-4">Ontdek Zeeuws-Vlaanderen</h1>
+          <p class="text-xl max-w-2xl mx-auto">Van historische vestingsteden tot uitgestrekte natuur en het strand.</p>
+      </div>
+  </div>
+
+  <main class="max-w-6xl mx-auto px-4 py-16">
+      <div class="grid md:grid-cols-2 gap-12">
+          <!-- Text Content -->
+          <div>
+              <h2 class="text-3xl font-serif font-bold text-green-900 mb-6">Een veelzijdige omgeving</h2>
+              <p class="text-stone-700 mb-4 leading-relaxed">
+                  B&B De Tol ligt in Vogelwaarde, een rustige uitvalsbasis om de streek te verkennen. 
+                  Of u nu houdt van fietsen langs de dijken, cultuur snuiven in Hulst, of winkelen in Antwerpen: alles is dichtbij.
+              </p>
+              <p class="text-stone-700 mb-6 leading-relaxed">
+                  Voor fietsliefhebbers zijn er talloze knooppuntroutes die u langs de mooiste plekjes van de streek leiden, 
+                  zoals de Staats-Spaanse Linies en de oevers van de Westerschelde.
+              </p>
+              
+              <div class="bg-indigo-50 p-6 rounded-lg border border-indigo-100 flex gap-4 items-start">
+                  <Bike class="w-8 h-8 text-indigo-900 shrink-0" />
+                  <div>
+                    <h3 class="font-bold text-indigo-900 mb-2">Fietsverhuur & Stalling</h3>
+                    <p class="text-sm text-indigo-800">
+                        Neem uw eigen fietsen mee (gratis stalling!) of huur fietsen in de buurt. Wij adviseren u graag over de mooiste routes.
+                    </p>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Highlights Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {localSpots.map(({ title, description, distance, Icon }) => (
+                  <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-100 hover:shadow-md transition group">
+                      <div class="mb-4 text-green-800 group-hover:scale-110 transition duration-300">
+                        <Icon size={40} />
+                      </div>
+                      <h3 class="font-serif font-bold text-lg mb-2">{title}</h3>
+                      <div class="text-xs font-bold text-green-700 uppercase tracking-wide mb-2">{distance}</div>
+                      <p class="text-sm text-stone-600">{description}</p>
+                  </div>
+              ))}
+          </div>
+      </div>
+  </main>
+</Layout>

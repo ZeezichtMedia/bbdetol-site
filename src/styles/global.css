@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+  --color-forest-green: #2C5F2D;
+  --color-sage-green: #97BC62;
+  --color-sand: #F2E8CF;
+  --color-terracotta: #A0522D;
+
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+
+
+html,
+body {
+  @apply bg-sand/20;
+}

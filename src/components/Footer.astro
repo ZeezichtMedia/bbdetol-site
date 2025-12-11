@@ -1,0 +1,53 @@
+---
+import { Facebook, Instagram, Phone, Mail, MapPin } from 'lucide-react';
+---
+
+<footer class="bg-stone-900 text-stone-300 py-16 mt-auto">
+  <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-12">
+    
+    <!-- Brand -->
+    <div>
+      <h3 class="text-2xl font-serif font-bold text-white mb-4">B&B De Tol</h3>
+      <p class="mb-6 leading-relaxed">
+        Ervaar de Zeeuwse gastvrijheid en rust in onze sfeervolle Bed & Breakfast. De perfecte uitvalsbasis voor natuur en cultuur.
+      </p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-white transition"><Facebook /></a>
+        <a href="#" class="hover:text-white transition"><Instagram /></a>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+        <h3 class="text-lg font-bold text-white mb-4">Direct naar</h3>
+        <ul class="space-y-2">
+            <li><a href="/nl" class="hover:text-white transition">Home</a></li>
+            <li><a href="/nl/accommodatie" class="hover:text-white transition">Onze Kamers</a></li>
+            <li><a href="/nl/omgeving" class="hover:text-white transition">Omgeving Hulst</a></li>
+            <li><a href="/nl/contact" class="hover:text-white transition">Contact & Boeken</a></li>
+        </ul>
+    </div>
+
+    <!-- Contact -->
+    <div>
+        <h3 class="text-lg font-bold text-white mb-4">Contact</h3>
+        <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+                <MapPin class="w-5 h-5 mt-1 shrink-0" />
+                <span>Rapenburg 143<br/>4581 AC Vogelwaarde</span>
+            </li>
+            <li class="flex items-center gap-3">
+                <Phone class="w-5 h-5 shrink-0" />
+                <a href="tel:+31625077872" class="hover:text-white">(+31) 06-25077872</a>
+            </li>
+            <li class="flex items-center gap-3">
+                <Mail class="w-5 h-5 shrink-0" />
+                <a href="mailto:info@bedandbreakfastdetol.nl" class="hover:text-white">info@bedandbreakfastdetol.nl</a>
+            </li>
+        </ul>
+    </div>
+  </div>
+  <div class="border-t border-stone-800 mt-12 pt-8 text-center text-sm text-stone-500">
+      &copy; {new Date().getFullYear()} B&B De Tol. Alle rechten voorbehouden.
+  </div>
+</footer>
