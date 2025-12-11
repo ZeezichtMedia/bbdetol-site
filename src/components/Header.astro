@@ -1,17 +1,23 @@
 ---
 import { Menu } from 'lucide-react';
+import { ui, defaultLang } from '../i18n/ui';
+
+const currentPath = Astro.url.pathname;
+const currentLang = (currentPath.split('/')[1] in ui) ? currentPath.split('/')[1] as keyof typeof ui : defaultLang;
+
+const t = ui[currentLang];
 
 const links = [
-  { href: "/nl", text: "Home" },
-  { href: "/nl/accommodatie", text: "Kamers" },
-  { href: "/nl/omgeving", text: "Omgeving" },
-  { href: "/nl/contact", text: "Contact" },
+  { href: `/${currentLang}`, text: t['nav.home'] },
+  { href: `/${currentLang}/accommodatie`, text: t['nav.rooms'] },
+  { href: `/${currentLang}/omgeving`, text: t['nav.surroundings'] },
+  { href: `/${currentLang}/contact`, text: t['nav.contact'] },
 ];
 ---
 
 <header class="bg-white/95 backdrop-blur-sm fixed w-full top-0 z-50 border-b border-stone-100 shadow-sm transition-all duration-300">
   <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <a href="/nl" class="text-2xl font-serif font-bold text-green-900 tracking-tight hover:opacity-80 transition">
+    <a href={`/${currentLang}`} class="text-2xl font-serif font-bold text-green-900 tracking-tight hover:opacity-80 transition">
       B&B De Tol
     </a>
 
@@ -26,8 +32,8 @@ const links = [
         ))}
       </nav>
       
-      <a href="/nl/contact" class="bg-green-800 text-white px-6 py-2.5 rounded-full font-bold text-sm tracking-wide shadow-md hover:bg-green-900 hover:shadow-lg hover:-translate-y-0.5 transition-all">
-        Reserveer Nu
+      <a href={`/${currentLang}/contact`} class="bg-green-800 text-white px-6 py-2.5 rounded-full font-bold text-sm tracking-wide shadow-md hover:bg-green-900 hover:shadow-lg hover:-translate-y-0.5 transition-all">
+        {t['btn.reserve']}
       </a>
     </div>
 

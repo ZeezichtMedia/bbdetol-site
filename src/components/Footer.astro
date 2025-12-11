@@ -1,5 +1,10 @@
 ---
 import { Facebook, Instagram, Phone, Mail, MapPin } from 'lucide-react';
+import { ui, defaultLang } from '../i18n/ui';
+
+const currentPath = Astro.url.pathname;
+const currentLang = (currentPath.split('/')[1] in ui) ? currentPath.split('/')[1] as keyof typeof ui : defaultLang;
+const t = ui[currentLang];
 ---
 
 <footer class="bg-stone-900 text-stone-300 py-16 mt-auto">
@@ -9,7 +14,7 @@ import { Facebook, Instagram, Phone, Mail, MapPin } from 'lucide-react';
     <div>
       <h3 class="text-2xl font-serif font-bold text-white mb-4">B&B De Tol</h3>
       <p class="mb-6 leading-relaxed">
-        Ervaar de Zeeuwse gastvrijheid en rust in onze sfeervolle Bed & Breakfast. De perfecte uitvalsbasis voor natuur en cultuur.
+        {t['footer.desc']}
       </p>
       <div class="flex gap-4">
         <a href="#" class="hover:text-white transition"><Facebook /></a>
@@ -19,18 +24,18 @@ import { Facebook, Instagram, Phone, Mail, MapPin } from 'lucide-react';
 
     <!-- Quick Links -->
     <div>
-        <h3 class="text-lg font-bold text-white mb-4">Direct naar</h3>
+        <h3 class="text-lg font-bold text-white mb-4">{t['footer.direct']}</h3>
         <ul class="space-y-2">
-            <li><a href="/nl" class="hover:text-white transition">Home</a></li>
-            <li><a href="/nl/accommodatie" class="hover:text-white transition">Onze Kamers</a></li>
-            <li><a href="/nl/omgeving" class="hover:text-white transition">Omgeving Hulst</a></li>
-            <li><a href="/nl/contact" class="hover:text-white transition">Contact & Boeken</a></li>
+            <li><a href={`/${currentLang}`} class="hover:text-white transition">{t['nav.home']}</a></li>
+            <li><a href={`/${currentLang}/accommodatie`} class="hover:text-white transition">{t['nav.rooms']}</a></li>
+            <li><a href={`/${currentLang}/omgeving`} class="hover:text-white transition">{t['nav.surroundings']}</a></li>
+            <li><a href={`/${currentLang}/contact`} class="hover:text-white transition">{t['nav.contact']}</a></li>
         </ul>
     </div>
 
     <!-- Contact -->
     <div>
-        <h3 class="text-lg font-bold text-white mb-4">Contact</h3>
+        <h3 class="text-lg font-bold text-white mb-4">{t['footer.contact']}</h3>
         <ul class="space-y-4">
             <li class="flex items-start gap-3">
                 <MapPin class="w-5 h-5 mt-1 shrink-0" />
@@ -48,6 +53,6 @@ import { Facebook, Instagram, Phone, Mail, MapPin } from 'lucide-react';
     </div>
   </div>
   <div class="border-t border-stone-800 mt-12 pt-8 text-center text-sm text-stone-500">
-      &copy; {new Date().getFullYear()} B&B De Tol. Alle rechten voorbehouden.
+      &copy; {new Date().getFullYear()} B&B De Tol. {t['footer.rights']}
   </div>
 </footer>

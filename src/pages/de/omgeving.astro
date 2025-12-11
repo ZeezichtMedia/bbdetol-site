@@ -1,0 +1,85 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Castle, Trees, Building2, Sun, Bike } from 'lucide-react';
+
+const localSpots = [
+    {
+        title: "Festungsstadt Hulst",
+        description: "Besuchen Sie die historische Festungsstadt mit ihren Wällen, der Basilika und gemütlichen Terrassen.",
+        Icon: Castle,
+        distance: "7 km"
+    },
+    {
+        title: "Verdronken Land van Saeftinghe",
+        description: "Ein einzigartiges Naturschutzgebiet, ideal für abenteuerliche Wanderungen und Naturliebhaber.",
+        Icon: Trees,
+        distance: "10 km"
+    },
+    {
+        title: "Antwerpen & Gent",
+        description: "Innerhalb von 40 Minuten sind Sie im Herzen dieser wunderschönen flämischen Städte.",
+        Icon: Building2,
+        distance: "40 km"
+    },
+     {
+        title: "Strand & Küste",
+        description: "Frische Luft schnappen an der seeländischen Küste bei Breskens oder Cadzand.",
+        Icon: Sun,
+        distance: "30-40 min"
+    }
+];
+---
+
+<Layout title="Umgebung | B&B De Tol" lang="de">
+  <!-- Hero -->
+  <div class="relative h-[50vh] bg-stone-900 flex items-center justify-center">
+      <div class="absolute inset-0 overflow-hidden opacity-60">
+        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/749264372.jpg?k=dda48c53570ddf3bb6d9356dc5da296cd4b034075379255877811c5b0d2a0e3e&o=&hp=1" class="w-full h-full object-cover" />
+      </div>
+      <div class="relative z-10 text-center text-white px-4">
+          <h1 class="text-4xl md:text-6xl font-serif font-bold mb-4">Entdecken Sie Seeländisch-Flandern</h1>
+          <p class="text-xl max-w-2xl mx-auto">Von historischen Festungsstädten bis hin zu weiter Natur und dem Strand.</p>
+      </div>
+  </div>
+
+  <main class="max-w-6xl mx-auto px-4 py-16">
+      <div class="grid md:grid-cols-2 gap-12">
+          <!-- Text Content -->
+          <div>
+              <h2 class="text-3xl font-serif font-bold text-green-900 mb-6">Eine vielseitige Umgebung</h2>
+              <p class="text-stone-700 mb-4 leading-relaxed">
+                  B&B De Tol liegt in Vogelwaarde, einem ruhigen Ausgangspunkt, um die Region zu erkunden. 
+                  Egal, ob Sie gerne an den Deichen entlang radeln, in Hulst Kultur schnuppern oder in Antwerpen einkaufen: Alles ist in der Nähe.
+              </p>
+              <p class="text-stone-700 mb-6 leading-relaxed">
+                  Für Fahrradliebhaber gibt es zahlreiche Knotenpunktrouten, die Sie zu den schönsten Plätzen der Region führen, 
+                  wie die Staats-Spaanse Linies und die Ufer der Westerschelde.
+              </p>
+              
+              <div class="bg-indigo-50 p-6 rounded-lg border border-indigo-100 flex gap-4 items-start">
+                  <Bike class="w-8 h-8 text-indigo-900 shrink-0" />
+                  <div>
+                    <h3 class="font-bold text-indigo-900 mb-2">Fahrradverleih & Unterstellplatz</h3>
+                    <p class="text-sm text-indigo-800">
+                        Bringen Sie Ihre eigenen Fahrräder mit (kostenloser Unterstellplatz!) oder mieten Sie Fahrräder in der Nähe. Wir beraten Sie gerne zu den schönsten Routen.
+                    </p>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Highlights Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {localSpots.map(({ title, description, distance, Icon }) => (
+                  <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-100 hover:shadow-md transition group">
+                      <div class="mb-4 text-green-800 group-hover:scale-110 transition duration-300">
+                        <Icon size={40} />
+                      </div>
+                      <h3 class="font-serif font-bold text-lg mb-2">{title}</h3>
+                      <div class="text-xs font-bold text-green-700 uppercase tracking-wide mb-2">{distance}</div>
+                      <p class="text-sm text-stone-600">{description}</p>
+                  </div>
+              ))}
+          </div>
+      </div>
+  </main>
+</Layout>

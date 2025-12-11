@@ -1,0 +1,159 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Star, MapPin, Coffee, ParkingCircle } from 'lucide-react';
+
+// Selected images for the collage
+const galleryImages = [
+  "https://cf.bstatic.com/xdata/images/hotel/max1024x768/749264769.jpg?k=28245f0fcbcd91807ca4c8a95cad7e41ce36196bb71297ef75f3d3d017c4009b&o=&hp=1", // Garden
+  "https://cf.bstatic.com/xdata/images/hotel/max1024x768/195003124.jpg?k=3292d478379c79a1d83880fde0c26c6e639db5f0085a779583779073748ab59f&o=&hp=1", // Interior logic
+  "https://cf.bstatic.com/xdata/images/hotel/max1024x768/780608628.jpg?k=592dc1b8103ccdbc76af21f772b76a83430ca971f87dbe0597c2913fe36fd71b&o=&hp=1", // Breakfast
+  "https://cf.bstatic.com/xdata/images/hotel/max1024x768/276220680.jpg?k=c083bb1b6ce1d5da0809693997b85049d68a8e0696e113b67b087fe0c62e6794&o=&hp=1", // Room
+  "https://cf.bstatic.com/xdata/images/hotel/max1024x768/722515840.jpg?k=10e2da46f0fb32cb0fd955e59f185a0d6c42c95f33a5776aec5cccd137f63f25&o=&hp=1", // Room Detail
+  "https://cf.bstatic.com/xdata/images/hotel/max1024x768/292475017.jpg?k=6dc5d50440dddd84e1e8dd3831a436a6d60a3205bfe0a818e86d59a1b5468e87&o=&hp=1", // Exterior/Other
+];
+
+const reviews = [
+  {
+    name: "Jo, UK",
+    text: "It was simply good: the location, friendly welcome, spacious and clean decor.",
+  },
+  {
+    name: "Yolanda, NL",
+    text: "Very large B&B, looks neat. Very friendly people. Definitely worth repeating.",
+  },
+  {
+    name: "Rob, NL",
+    text: "Great location, nice beds, huge room, very beautifully decorated, excellent breakfast and very friendly hostess! Top!",
+  },
+];
+---
+
+<Layout title="B&B De Tol | Peace and Space in Zeeland-Flanders" lang="en">
+  <!-- Hero Section -->
+  <div class="relative h-[85vh] w-full overflow-hidden">
+    <div class="absolute inset-0">
+      <img src={galleryImages[0]} alt="B&B De Tol Garden" class="h-full w-full object-cover animate-fade-in" />
+      <div class="absolute inset-0 bg-black/30"></div>
+    </div>
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4 z-10">
+      <h1 class="text-5xl md:text-7xl font-serif font-bold mb-6 drop-shadow-lg tracking-tight">B&B De Tol</h1>
+      <p class="text-xl md:text-2xl font-light max-w-2xl mb-10 drop-shadow-md">
+        Peace, space and hospitality in the heart of Zeeland-Flanders.
+      </p>
+      <div class="flex gap-4">
+        <a href="/en/accommodatie" class="bg-white text-green-900 px-8 py-3.5 rounded-full font-bold hover:bg-stone-50 transition shadow-lg hover:scale-105 transform duration-300">
+          View Rooms
+        </a>
+        <a href="/en/contact" class="bg-transparent border-2 border-white text-white px-8 py-3.5 rounded-full font-bold hover:bg-white/10 transition hover:scale-105 transform duration-300">
+          Contact
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Intro / Host Section -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-green-800 font-serif italic text-xl">Welcome</span>
+      <h2 class="text-4xl md:text-5xl font-serif font-bold text-stone-900 mt-3 mb-12">Your hostess: Anneke de Moor</h2>
+      <div class="flex flex-col md:flex-row items-center gap-16">
+        <div class="flex-1 text-left prose prose-stone lg:prose-xl leading-relaxed text-stone-600">
+          <p>
+            A warm welcome on our behalf at B&B "De Tol" in Vogelwaarde. We offer spacious, comfortably furnished rooms equipped with all conveniences such as a private bathroom, refrigerator, and free WiFi.
+          </p>
+          <p>
+            Our B&B is known for its quiet location and beautiful garden. Guests rate us with a <strong>9.6</strong> (Exceptional)!
+          </p>
+        </div>
+        <div class="flex-1 relative group">
+            <div class="absolute -inset-4 bg-green-100/50 rounded-2xl -rotate-2 group-hover:rotate-0 transition duration-500"></div>
+             <img src={galleryImages[1]} alt="Atmospheric interior" class="relative rounded-xl shadow-xl w-full h-auto object-cover" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USPs -->
+  <section class="py-16 bg-stone-50 border-y border-stone-100">
+    <div class="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div class="flex flex-col items-center group">
+        <Star class="text-green-800 w-10 h-10 mb-4 group-hover:scale-110 transition duration-300" />
+        <div class="text-4xl font-serif font-bold text-green-800 mb-1">9.6</div>
+        <div class="font-medium text-stone-600 uppercase tracking-widest text-xs">Booking.com Score</div>
+      </div>
+      <div class="flex flex-col items-center group">
+        <MapPin class="text-green-800 w-10 h-10 mb-4 group-hover:scale-110 transition duration-300" />
+        <div class="font-bold text-stone-800 mt-2">Top Location</div>
+        <div class="text-sm text-stone-500 mt-1">Near Hulst</div>
+      </div>
+      <div class="flex flex-col items-center group">
+        <Coffee class="text-green-800 w-10 h-10 mb-4 group-hover:scale-110 transition duration-300" />
+        <div class="font-bold text-stone-800 mt-2">Fresh Breakfast</div>
+        <div class="text-sm text-stone-500 mt-1">Local Products</div>
+      </div>
+      <div class="flex flex-col items-center group">
+        <ParkingCircle class="text-green-800 w-10 h-10 mb-4 group-hover:scale-110 transition duration-300" />
+        <div class="font-bold text-stone-800 mt-2">Free Parking</div>
+        <div class="text-sm text-stone-500 mt-1">On site</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews & Gallery -->
+  <section class="py-24 px-4 bg-white">
+      <div class="max-w-6xl mx-auto">
+          <!-- Reviews Header -->
+          <div class="text-center mb-16">
+              <h2 class="text-4xl font-serif font-bold text-stone-900 mb-4">What our guests say</h2>
+              <div class="flex justify-center gap-1">
+                  {[1,2,3,4,5].map(() => <Star class="w-5 h-5 text-yellow-500 fill-current" />)}
+              </div>
+          </div>
+
+          <!-- Review Grid -->
+          <div class="grid md:grid-cols-3 gap-8 mb-24">
+              {reviews.map(review => (
+                  <div class="bg-stone-50 p-8 rounded-2xl relative">
+                      <div class="text-4xl text-green-200 absolute top-4 left-4 font-serif">"</div>
+                      <p class="text-stone-700 italic relative z-10 mb-6">{review.text}</p>
+                      <div class="font-bold text-stone-900 text-sm border-t border-stone-200 pt-4 inline-block">
+                          — {review.name}
+                      </div>
+                  </div>
+              ))}
+          </div>
+
+          <!-- Dynamic Masonry Gallery -->
+          <div class="text-center mb-12">
+            <h2 class="text-4xl font-serif font-bold text-stone-900">Atmosphere</h2>
+            <p class="text-stone-500 mt-2">A look inside and around B&B De Tol</p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-4 h-[600px] md:h-[500px]">
+              <div class="md:col-span-2 md:row-span-2 rounded-xl overflow-hidden group relative">
+                  <img src={galleryImages[2]} alt="Breakfast" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+                  <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition"></div>
+              </div>
+              <div class="rounded-xl overflow-hidden group relative">
+                  <img src={galleryImages[3]} alt="Room detail" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+              </div>
+              <div class="rounded-xl overflow-hidden group relative">
+                   <img src={galleryImages[4]} alt="Atmosphere" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+              </div>
+              <div class="md:col-span-2 rounded-xl overflow-hidden group relative">
+                   <img src={galleryImages[5]} alt="Garden" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+              </div>
+          </div>
+      </div>
+  </section>
+</Layout>
+
+<style>
+  .animate-fade-in {
+    animation: fadeIn 1.5s ease-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(1.05); }
+    to { opacity: 1; transform: scale(1); }
+  }
+</style>
