@@ -13,6 +13,21 @@ const links = [
   { href: `/${currentLang}/omgeving`, text: t['nav.surroundings'] },
   { href: `/${currentLang}/contact`, text: t['nav.contact'] },
 ];
+
+const languages = {
+  nl: 'NL',
+  en: 'EN',
+  de: 'DE',
+};
+
+const getLangUrl = (lang: string) => {
+  const parts = currentPath.split('/');
+  // If root "/", parts is ["", ""] or similar depending on Astro. 
+  // We want to ensure we keep the path structure. 
+  // Current logic assumes /nl, /en, /de prefix is always present due to i18n config.
+  parts[1] = lang;
+  return parts.join('/') || '/';
+};
 ---
 
 <header class="bg-white/95 backdrop-blur-sm fixed w-full top-0 z-50 border-b border-stone-100 shadow-sm transition-all duration-300">
@@ -22,8 +37,8 @@ const links = [
     </a>
 
     <!-- Desktop Nav -->
-    <div class="hidden md:flex items-center gap-10">
-      <nav class="flex gap-8">
+    <div class="hidden md:flex items-center gap-8">
+      <nav class="flex gap-6">
         {links.map(link => (
           <a href={link.href} class="text-stone-600 hover:text-green-800 font-medium text-sm uppercase tracking-wide transition relative group">
             {link.text}
@@ -31,6 +46,20 @@ const links = [
           </a>
         ))}
       </nav>
+
+      <div class="h-6 w-px bg-stone-200"></div>
+
+      <!-- Language Switcher -->
+      <div class="flex gap-2 text-sm font-medium">
+        {Object.entries(languages).map(([lang, label]) => (
+          <a 
+            href={getLangUrl(lang)} 
+            class={`transition-colors ${currentLang === lang ? 'text-green-800 font-bold' : 'text-stone-400 hover:text-stone-600'}`}
+          >
+            {label}
+          </a>
+        ))}
+      </div>
       
       <a href={`/${currentLang}/contact`} class="bg-green-800 text-white px-6 py-2.5 rounded-full font-bold text-sm tracking-wide shadow-md hover:bg-green-900 hover:shadow-lg hover:-translate-y-0.5 transition-all">
         {t['btn.reserve']}
@@ -38,9 +67,21 @@ const links = [
     </div>
 
     <!-- Mobile Menu Button -->
-    <button class="md:hidden p-2 text-stone-600 hover:text-green-800 hover:bg-stone-50 rounded-lg transition">
-      <Menu />
-    </button>
+    <div class="md:hidden flex items-center gap-4">
+        <div class="flex gap-2 text-sm font-medium">
+            {Object.entries(languages).map(([lang, label]) => (
+            <a 
+                href={getLangUrl(lang)} 
+                class={`transition-colors ${currentLang === lang ? 'text-green-800 font-bold' : 'text-stone-400 hover:text-stone-600'}`}
+            >
+                {label}
+            </a>
+            ))}
+        </div>
+        <button class="p-2 text-stone-600 hover:text-green-800 hover:bg-stone-50 rounded-lg transition">
+            <Menu />
+        </button>
+    </div>
   </div>
 </header>
 <div class="h-16"></div> <!-- Spacer -->
