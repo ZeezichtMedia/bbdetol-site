@@ -78,10 +78,47 @@ const getLangUrl = (lang: string) => {
             </a>
             ))}
         </div>
-        <button class="p-2 text-stone-600 hover:text-green-800 hover:bg-stone-50 rounded-lg transition">
+        <button id="mobile-menu-btn" class="p-2 text-stone-600 hover:text-green-800 hover:bg-stone-50 rounded-lg transition" aria-label="Menu">
             <Menu />
         </button>
     </div>
   </div>
+
+  <!-- Mobile Menu Container -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-stone-100 absolute w-full left-0 top-full shadow-lg">
+      <nav class="flex flex-col p-4 space-y-2">
+        {links.map(link => (
+          <a href={link.href} class="block py-3 px-4 text-stone-700 hover:bg-stone-50 hover:text-green-800 rounded-lg font-medium transition">
+            {link.text}
+          </a>
+        ))}
+         <a href={`/${currentLang}/contact`} class="block py-3 px-4 bg-green-800 text-white rounded-lg font-bold text-center mt-4">
+            {t['btn.reserve']}
+        </a>
+      </nav>
+  </div>
 </header>
 <div class="h-16"></div> <!-- Spacer -->
+
+<script is:inline>
+  function setupMobileMenu() {
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileBtn && mobileMenu) {
+      // Clone to remove old event listeners if any (in case of re-runs)
+      const newBtn = mobileBtn.cloneNode(true);
+      mobileBtn.parentNode.replaceChild(newBtn, mobileBtn);
+      
+      newBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  }
+
+  // Run on initial load
+  document.addEventListener('DOMContentLoaded', setupMobileMenu);
+  
+  // Run on Astro page swaps (if ViewTransitions are ever enabled)
+  document.addEventListener('astro:page-load', setupMobileMenu);
+</script>
